@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+
+    <f:event type="preRenderView" listener="#{predavanje.ucitaj1()}"/>
+
+    <h:head>
+        <title>Predavanja</title>
+        <h:outputStylesheet library="kiki" name="prikaz.css">
+
+        </h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <p:layout style="min-width:400px;min-height:200px;" fullPage="true" >
+            <p:layoutUnit position="north" resizable="false" size="150"  gutter="0">
+                <div class="veliki" >
+                    <div class="slika">  <h:graphicImage value="resources/druga.jpg"  height="100"  width="100"  /> </div>
+                    <div class="div" >     <p:outputLabel value="Elektrotehnički fakultet Univerzitet u Beogradu" class="naslov"/> </div>
+                </div> 
+
+            </p:layoutUnit>
+            <p:layoutUnit position="center"  gutter="0">
+                <h:form>
+                    <p:dataTable emptyMessage="Nije zakazano nijedno predavanje za naredni period" value="#{predavanje.sledeca}" var="p" sortBy="#{p.datum}">
+                        <f:facet name="header" >
+                            Predavanja u narednom periodu
+                        </f:facet>
+                        <p:column headerText="Naslov">
+                            <h:outputText value="#{p.naslov}"/>
+                        </p:column>
+                        <p:column headerText="Naslov na engleskom jeziku">
+                            <h:outputText value="#{p.naslove}"/>
+                        </p:column>
+                        <p:column headerText="Opis">
+                            <h:outputText value="#{p.opis}"/>
+                        </p:column>
+                        <p:column headerText="Opis na engleskom jeziku">
+                            <h:outputText value="#{p.opise}"/>
+                        </p:column>
+                        <p:column headerText="Datum i vreme održavanja" sortBy="#{p.datum}">
+                            <h:outputText value="#{p.datum}"/>
+                        </p:column>
+                        <p:column headerText="Sala">
+                            <h:outputText value="#{p.sala}"/>
+                        </p:column>
+                        <p:column headerText="Predavač">
+                            <h:outputText value="#{p.ime}"/>
+                        </p:column>
+                        <p:column headerText="Biografija predavača">
+                            <h:outputText value="#{p.biografija}"/>
+                        </p:column>
+                        <p:column headerText="Skini">
+                            <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" rendered="#{p.ima}">
+                                <p:fileDownload value="#{p.file}" />
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                <br/>
+                <br/>
+                <br/>
+                <h:form>
+                    <p:dataTable emptyMessage="Nije održano nijedno predavanje " value="#{predavanje.prosla}" var="l" rows="20" paginator="false" sortBy="#{l.datum}" sortOrder="descending">
+                        <f:facet name="header" >
+                            Arhiva predavanja
+                        </f:facet>
+                        <p:column headerText="Naslov">
+                            <h:outputText value="#{l.naslov}"/>
+                        </p:column>
+                        <p:column headerText="Naslov na engleskom jeziku">
+                            <h:outputText value="#{l.naslove}"/>
+                        </p:column>
+                        <p:column headerText="Opis">
+                            <h:outputText value="#{l.opis}"/>
+                        </p:column>
+                        <p:column headerText="Opis na engleskom jeziku">
+                            <h:outputText value="#{l.opise}"/>
+                        </p:column>
+                        <p:column headerText="Datum i vreme održavanja">
+                            <h:outputText value="#{l.datum}"/>
+                        </p:column>
+                        <p:column headerText="Sala">
+                            <h:outputText value="#{l.sala}"/>
+                        </p:column>
+                        <p:column headerText="Predavač">
+                            <h:outputText value="#{l.ime}"/>
+                        </p:column>
+                        <p:column headerText="Biografija predavača">
+                            <h:outputText value="#{l.biografija}"/>
+                        </p:column>
+                        <p:column headerText="Skini">
+                            <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" rendered="#{l.ima}" action="#{l.opetStream()}">
+                                <p:fileDownload value="#{l.file}" />
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" gutter="0" size="200">
+                <h:form>
+
+                    <p:commandButton value="Povratak na prethodnu stranu " action="index" class="dugme"/>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50" gutter="0">
+                <p:outputLabel class="header"  value="Elektrotehnički fakultet, Univerzitet u Beogradu, Bulevar kralja Aleksandra 73, 11200 Beograd, Srbija"/>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

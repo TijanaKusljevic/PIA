@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+      >
+
+    <f:event type="preRenderView" listener="#{oglas.izlistaj()}"/>
+
+    <h:head>
+        <title>Oglasi za posao i praksu</title>
+        <h:outputStylesheet library="kiki" name="prikaz.css">
+
+        </h:outputStylesheet>
+    </h:head>
+    <h:body>
+
+        <p:layout style="min-width:400px;min-height:200px;" fullPage="true" >
+            <p:layoutUnit position="north" resizable="false" size="150"  gutter="0">
+                <div class="veliki" >
+                    <div class="slika">  <h:graphicImage value="resources/druga.jpg"  height="100"  width="100"  /> </div>
+                    <div class="div" >     <p:outputLabel value="Elektrotehnički fakultet Univerzitet u Beogradu" class="naslov"/> </div>
+                </div> 
+
+
+            </p:layoutUnit>
+            <p:layoutUnit position="center"  gutter="0">
+                <h:form>
+                    <p:dataTable value="#{oglas.svi}" var="pak" sortBy="#{pak.datum}" sortOrder="descending">
+                        <p:column headerText="Naslov">
+                            <h:outputText value="#{pak.naslov}" />
+                        </p:column>
+                        <p:column headerText="Opis" >
+                            <h:outputText value="#{pak.opis}" />
+                        </p:column>
+                        <p:column headerText="Datum"  >
+                            <h:outputText value="#{pak.datum}" />
+                        </p:column>
+                        <p:column headerText="Vrsta"  >
+                            <h:outputText value="#{pak.prikaz}" />
+                        </p:column>
+                        <p:column headerText="Skini">
+                            <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" rendered="#{pak.ima}" action="#{pak.ucitajStreamOpet()}">
+                                <p:fileDownload value="#{pak.file}" />
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+
+            </p:layoutUnit>
+            <p:layoutUnit position="east" gutter="0" size="200">
+                <h:form>
+
+                    <p:commandButton value="Povratak na prethodnu stranu " action="index" class="dugme"/>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50" gutter="0">
+                <p:outputLabel class="header"  value="Elektrotehnički fakultet, Univerzitet u Beogradu, Bulevar kralja Aleksandra 73, 11200 Beograd, Srbija"/>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

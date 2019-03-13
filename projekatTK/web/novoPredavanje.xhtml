@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Dodaj predavanje</title>
+        <h:outputStylesheet library="kiki" name="prikaz.css">
+
+        </h:outputStylesheet>
+        <f:event type="preRenderView" listener="#{predavanje.ucitaj()}"/> 
+    </h:head>
+    <h:body>
+        <p:layout style="min-width:400px;min-height:200px;" fullPage="true" >
+            <p:layoutUnit position="north" resizable="false" size="150"  gutter="0">
+                <div class="veliki" >
+                    <div class="slika">  <h:graphicImage value="resources/druga.jpg"  height="100"  width="100"  /> </div>
+                    <div class="div" >     <p:outputLabel value="Elektrotehnički fakultet Univerzitet u Beogradu" class="naslov"/> </div>
+                </div> 
+
+            </p:layoutUnit>
+            <p:layoutUnit position="center"  gutter="0">
+                
+                <p:outputLabel value="Niste odgovorni ni za jednu komaniju sa aktivnim ugovorom" rendered="#{empty predavanje.items}"/>
+                
+                <h:form rendered="#{not empty predavanje.items}" enctype="multipart/form-data">
+
+                    <p:outputLabel value="Izaberite kompaniju:"/>
+                    <p:selectOneMenu value="#{predavanje.komp}" rendered="#{not empty predavanje.items}" required="true">
+                        <f:selectItems value="#{predavanje.items}">  </f:selectItems>
+                    </p:selectOneMenu>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <p:panelGrid columns="2">
+                        Naslov na srpskom jeziku*: <p:inputText value="#{predavanje.naslov}" required="true"/>
+                        Naslov na engleskom jeziku: <p:inputText value="#{predavanje.naslove}"/>
+                        Opis na srpskom jeziku*: <p:inputTextarea value="#{predavanje.opis}" required="true"/>   
+                        Opis na engleskom jeziku: <p:inputTextarea value="#{predavanje.opise}"/>
+                        Datum i vreme održavanja*: <p:calendar value="#{predavanje.datum}" pattern="MM/dd/yyyy HH:mm:ss" required="true"/>
+                        Sala*: <p:inputText value="#{predavanje.sala}" required="true"/>
+                        Ime i prezime predavača*: <p:inputText value="#{predavanje.ime}" required="true"/>
+                        Biografija predavača: <p:inputTextarea value="#{predavanje.biografija}"/>
+                        Fajl: <p:fileUpload value="#{predavanje.fajl}" mode="simple" fileLimit="1" sizeLimit="3000000" allowTypes="/(\.|\/)(png|jpe?g|tiff|pdf)$/"/>
+                    </p:panelGrid>
+                    <p:commandButton value="postavi" action="#{predavanje.postavi()}" ajax="false"/>
+                </h:form>
+            </p:layoutUnit>  
+              <p:layoutUnit position="east" gutter="0" size="200">
+                  <h:form>
+
+                    <p:commandButton value="Odjavi se" action="#{registracija.odjaviSe()}" class="dugme"/>
+                </h:form>
+                   <br/>
+                <h:form>
+
+                    <p:commandButton value="Povratak na prethodnu stranu " action="clan" class="dugme"/>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50" gutter="0">
+                <p:outputLabel class="header"  value="Elektrotehnički fakultet, Univerzitet u Beogradu, Bulevar kralja Aleksandra 73, 11200 Beograd, Srbija"/>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

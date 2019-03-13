@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Dodaj kompaniju</title>
+        <h:outputStylesheet library="kiki" name="prikaz.css">
+
+        </h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <p:layout style="min-width:400px;min-height:200px;" fullPage="true" >
+            <p:layoutUnit position="north" resizable="false" size="150"  gutter="0">
+                <div class="veliki" >
+                    <div class="slika">  <h:graphicImage value="resources/druga.jpg"  height="100"  width="100"  /> </div>
+                    <div class="div" >     <p:outputLabel value="Elektrotehnički fakultet Univerzitet u Beogradu" class="naslov"/> </div>
+                </div> 
+
+            </p:layoutUnit>
+            <p:layoutUnit position="center"  gutter="0">
+                <h:form enctype="multipart/form-data">
+                    Podaci o kompaniji: 
+                    <br/>
+                    <p:panelGrid columns="2">
+                        Naziv kompanije*: <p:inputText value="#{kompanija.naziv}" required="true"/>
+                        Adresa*: <p:inputText value="#{kompanija.adresa}" required="true"/>
+                        Grad*: <p:inputText value="#{kompanija.grad}" required="true"/>
+                        Poštanski broj*: <p:inputText value="#{kompanija.postanski}" required="true"/>
+                        Zemlja*: <p:inputText value="#{kompanija.zemlja}" required="true"/>
+                        Žiro racun*: <p:inputText value="#{kompanija.ziro}" required="true"/>
+                        Valuta*: <p:inputText value="#{kompanija.valuta}" required="true"/>
+                        PIB*: <p:inputText value="#{kompanija.pib}" required="true"/>
+                        Logo: <p:fileUpload value="#{kompanija.logo}" mode="simple" fileLimit="1" sizeLimit="3000000" allowTypes="/(\.|\/)(png|jpe?g|tiff|ai|pdf|eps)$/"/>
+                        Opis: <p:inputText value="#{kompanija.opis}"/>
+                        
+                    </p:panelGrid>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    Kontakt: 
+                    <br/>
+                    <p:panelGrid columns="2">
+                        Prvi kontakt telefon*:  <p:inputText value="#{kompanija.telefon1}" required="true"/>   
+                        Drugi kontakt telefon:  <p:inputText value="#{kompanija.telefon2}" />      
+                        Treci kontakt telefon:  <p:inputText value="#{kompanija.telefon3}" /> 
+                        Cetvrti kontakt telefon:  <p:inputText value="#{kompanija.telefon4}" />
+                        Peti kontakt telefon:  <p:inputText value="#{kompanija.telefon5}" />
+                        Prva email adresa*: <p:inputText value="#{kompanija.email1}" required="true"/>
+                        Druga email adresa: <p:inputText value="#{kompanija.email2}"/>
+                        Treca email adresa: <p:inputText value="#{kompanija.email3}"/>
+                        Cetvrta email adresa: <p:inputText value="#{kompanija.email4}"/>
+                        Peta email adresa: <p:inputText value="#{kompanija.email5}"/>
+                    </p:panelGrid>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    Kontakt osoba: 
+                    <br/>
+                    <p:panelGrid columns="2">
+                        Ime*: <p:inputText value="#{kompanija.ime}" required="true"/>
+                        Prezime*: <p:inputText value="#{kompanija.prezime}" required="true"/>
+                        Kontakt telefon*: <p:inputText value="#{kompanija.ktelefon}" required="true"/>
+                        Adresa elektronske pošte*: <p:inputText value="#{kompanija.kemail}" required="true"/>
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton ajax="false" value="upis" action="#{kompanija.upisi()}"/>
+                </h:form>
+            </p:layoutUnit>  
+              <p:layoutUnit position="east" gutter="0" size="200">
+                  <h:form>
+
+                    <p:commandButton value="Odjavi se" action="#{registracija.odjaviSe()}" class="dugme"/>
+                </h:form>
+                  <br/>
+                <h:form>
+
+                    <p:commandButton value="Povratak na prethodnu stranu " action="clan" class="dugme"/>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50" gutter="0">
+                <p:outputLabel class="header"  value="Elektrotehnički fakultet, Univerzitet u Beogradu, Bulevar kralja Aleksandra 73, 11200 Beograd, Srbija"/>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

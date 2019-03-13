@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+Copyright (c) 2008, 2016 Oracle and/or its affiliates. All rights reserved.
+
+Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+The contents of this file are subject to the terms of either the GNU
+General Public License Version 2 only ("GPL") or the Common
+Development and Distribution License("CDDL") (collectively, the
+"License"). You may not use this file except in compliance with the
+License. You can obtain a copy of the License at
+http://www.netbeans.org/cddl-gplv2.html
+or nbbuild/licenses/CDDL-GPL-2-CP. See the License for the
+specific language governing permissions and limitations under the
+License.  When distributing the software, include this License Header
+Notice in each file and include the License file at
+nbbuild/licenses/CDDL-GPL-2-CP.  Oracle designates this
+particular file as subject to the "Classpath" exception as provided
+by Oracle in the GPL Version 2 section of the License file that
+accompanied this code. If applicable, add the following below the
+License Header, with the fields enclosed by brackets [] replaced by
+your own identifying information:
+"Portions Copyrighted [year] [name of copyright owner]"
+
+If you wish your version of this file to be governed by only the CDDL
+or only the GPL Version 2, indicate your decision by adding
+"[Contributor] elects to include this software in this distribution
+under the [CDDL or GPL Version 2] license." If you do not indicate a
+single choice of license, a recipient has the option to distribute
+your version of this file under either the CDDL, the GPL Version 2 or
+to extend the choice of license to its licensees as provided above.
+However, if you add GPL Version 2 code and therefore, elected the GPL
+Version 2 license, then the option applies only if the new code is
+made subject to such option by the copyright holder.
+
+Contributor(s):
+-->
+<hibernate-mapping>
+  <class name="beans.Kompanija" table="kompanija">
+      <id column="id" name="id" type="int"><generator class="increment"/> </id>
+  <property column="ime" name="ime" type="string"> </property>
+       <property column="prezime" name="prezime" type="string"> </property>
+       <property column="naziv" name="naziv" type="string"> </property>
+       <property column="adresa" name="adresa" type="string"> </property>
+       <property column="grad" name="grad" type="string"> </property>
+       <property column="zemlja" name="zemlja" type="string"> </property>
+       <property column="ziro" name="ziro" type="string"> </property>
+       <property column="postanski" name="postanski" type="integer"> </property>
+       <property column="valuta" name="valuta" type="string"> </property>
+       <property column="pib" name="pib" type="string"> </property>
+       <property column="telefon1" name="telefon1" type="string"> </property>
+       <property column="telefon2" name="telefon2" type="string"> </property>
+       <property column="telefon3" name="telefon3" type="string"> </property>
+       <property column="telefon4" name="telefon4" type="string"> </property>
+       <property column="telefon5" name="telefon5" type="string"> </property>
+       <property column="email1" name="email1" type="string"> </property>
+       <property column="email2" name="email2" type="string"> </property>
+       <property column="email3" name="email3" type="string"> </property>
+       <property column="email4" name="email4" type="string"> </property>
+       <property column="email5" name="email5" type="string"> </property>
+       <property column="kemail" name="kemail" type="string"> </property>
+       <property column="ktelefon" name="ktelefon" type="string"> </property>
+       <property column="logo" name="stringZaBazu" type="string"> </property>
+       <property column="opis" name="opis" type="string"> </property>
+       <!--<property column="odgovoran" name="username" type="string"> </property>-->
+  </class>
+</hibernate-mapping>

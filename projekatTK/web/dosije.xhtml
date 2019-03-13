@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Dosije kompaije</title>
+        <h:outputStylesheet library="kiki" name="prikaz.css">
+
+        </h:outputStylesheet>
+    </h:head>
+    <h:body>
+
+        <p:layout style="min-width:400px;min-height:200px;" fullPage="true" >
+            <p:layoutUnit position="north" resizable="false" size="150"  gutter="0">
+                <div class="veliki" >
+                    <div class="slika">  <h:graphicImage value="resources/druga.jpg"  height="100"  width="100"  /> </div>
+                    <div class="div" >     <p:outputLabel value="Elektrotehnički fakultet Univerzitet u Beogradu" class="naslov"/> </div>
+                </div> 
+
+            </p:layoutUnit>
+            <p:layoutUnit position="center"  gutter="0">
+                <h:form >
+                    <p:selectBooleanCheckbox value="#{kompanija.azuriranje}" onchange="submit()"
+                                             /> <p:outputLabel value="Promena podataka"/>
+                    <p:panelGrid columns="2">
+                        Naziv kompanije: <p:outputLabel value="#{kompanija.naziv}" /> 
+
+
+                        Adresa: <p:outputLabel value="#{kompanija.adresa}" rendered="#{not kompanija.azuriranje}"/>
+                        <p:inputText value="#{kompanija.adresa}" rendered="#{ kompanija.azuriranje}"/>
+
+
+                        Grad: <p:outputLabel value="#{kompanija.grad}" rendered="#{not kompanija.azuriranje}"/>
+                        <p:inputText value="#{kompanija.grad}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Poštanski broj: <p:outputLabel value="#{kompanija.postanski}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.postanski}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Zemlja: <p:outputLabel value="#{kompanija.zemlja}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.zemlja}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Žiro račun: <p:outputLabel value="#{kompanija.ziro}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.ziro}" rendered="#{ kompanija.azuriranje}"/>
+
+
+                        Valuta: <p:outputLabel value="#{kompanija.valuta}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.valuta}" rendered="#{ kompanija.azuriranje}"/>
+
+                        PIB: <p:outputLabel value="#{kompanija.pib}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.pib}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Prvi email: <p:outputLabel value="#{kompanija.email1}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.email1}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Drugi email: <p:outputLabel value="#{kompanija.email2}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.email2}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Treći email: <p:outputLabel value="#{kompanija.email3}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.email3}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Četvrti email: <p:outputLabel value="#{kompanija.email4}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.email4}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Peti email: <p:outputLabel value="#{kompanija.email5}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.email5}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Prvi telefon: <p:outputLabel value="#{kompanija.telefon1}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.telefon1}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Drugi telefon: <p:outputLabel value="#{kompanija.telefon2}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.telefon2}" rendered="#{ kompanija.azuriranje}"/>
+
+
+                        Treći telefon: <p:outputLabel value="#{kompanija.telefon3}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.telefon3}" rendered="#{ kompanija.azuriranje}"/>
+
+
+                        Četvrti telefon: <p:outputLabel value="#{kompanija.telefon4}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.telefon4}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Peti telefon: <p:outputLabel value="#{kompanija.telefon5}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.telefon5}" rendered="#{ kompanija.azuriranje}"/>
+
+
+                        Ime kontakt osobe: <p:outputLabel value="#{kompanija.ime}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.ime}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Prezime kontakt osobe: <p:outputLabel value="#{kompanija.prezime}" rendered="#{not kompanija.azuriranje}"/>
+                        <p:inputText value="#{kompanija.prezime}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Kontakt telefon: <p:outputLabel value="#{kompanija.ktelefon}" rendered="#{not kompanija.azuriranje}"/> 
+                        <p:inputText value="#{kompanija.ktelefon}" rendered="#{ kompanija.azuriranje}"/>
+
+                        Kontakt email: <p:outputLabel value="#{kompanija.kemail}" rendered="#{not kompanija.azuriranje}"/>
+                        <p:inputText value="#{kompanija.kemail}" rendered="#{ kompanija.azuriranje}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="Sačuvaj promene" action="#{kompanija.sacuvaj()}"/>
+                </h:form>
+                <br/>
+                <br/>
+                <br/>
+                <p:dataTable value="#{kompanija.ugovori}" var="ugovor" rowStyleClass="#{ugovor.istekao ? 'red' : 'blue'}">
+                    <p:column headerText="Paket">
+                        <h:outputText value="#{ugovor.paket}" />
+                    </p:column>
+                    <p:column headerText="Datum potopisivanja">
+                        <h:outputText value="#{ugovor.datum}" />
+                    </p:column>
+                    <p:column headerText="Datum isticanja">
+                        <h:outputText value="#{ugovor.istice}" />
+                    </p:column>
+                    <p:column headerText="Vrsta">
+                        <h:outputText value="#{ugovor.vrsta}" />
+                    </p:column>
+                </p:dataTable>
+            </p:layoutUnit>  
+              <p:layoutUnit position="east" gutter="0" size="200">
+                  <h:form>
+
+                    <p:commandButton value="Odjavi se" action="#{registracija.odjaviSe()}" class="dugme"/>
+                </h:form>
+                  <br/>
+                  <h:form>
+
+                      <p:commandButton value="Povratak na početnu stranu" action="menadzer" class="dugme" rendered="#{registracija.menadzer}"/>
+                </h:form>
+                  <br/>
+                  <h:form>
+
+                      <p:commandButton value="Povratak na prethodnu stranu " action="clan" class="dugme" rendered="#{not registracija.menadzer and (not registracija.admin)}"/>
+                </h:form>
+                   <br/>
+                  <h:form>
+
+                      <p:commandButton value="Povratak na početnu stranu" action="admin" class="dugme" rendered="#{ registracija.admin}"/>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50" gutter="0">
+                <p:outputLabel class="header"  value="Elektrotehnički fakultet, Univerzitet u Beogradu, Bulevar kralja Aleksandra 73, 11200 Beograd, Srbija"/>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

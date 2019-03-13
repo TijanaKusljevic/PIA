@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <f:event type="preRenderView" listener="#{pomocni.ucitaj()}"/>
+
+    <h:head>
+        <title>Partnerski paketi ETF</title>
+        <h:outputStylesheet library="kiki" name="prikaz.css">
+
+        </h:outputStylesheet>
+    </h:head>
+    <h:body>
+
+
+        <p:layout style="min-width:400px;min-height:200px;" fullPage="true" >
+            <p:layoutUnit position="north" resizable="false" size="150"  gutter="0">
+                <div class="veliki" >
+                    <div class="slika">  <h:graphicImage value="resources/druga.jpg"  height="105"  width="100"  /> </div>
+                    <div class="div" >     <p:outputLabel value="Elektrotehnički fakultet Univerzitet u Beogradu" class="naslov"/> </div>
+                </div> 
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="east" size="200" gutter="0" >
+
+                <h:form >
+                    <p:commandButton value="Menjanje lozinke" action="menjanje" class="dugme"/>
+                </h:form>
+                <br/>
+                <h:form>
+                    <p:commandButton value="Registracija" action="registrovanje" class="dugme"/>
+                </h:form>
+                <br/>
+                <h:form>
+                    <p:commandButton value="Prikaz paketa" action="paketi" class="dugme" />
+                </h:form>
+                <br/>
+                <h:form>
+                    <p:commandButton value="Oglasi za praksu i posao" action="oglasi" class="dugme"/>
+                </h:form>
+                <br/>
+                <h:form>
+                    <p:commandButton value="Predavanja" action="predavanja" class="dugme"/>
+                </h:form>
+
+
+
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="200" gutter="0">
+
+
+                #{registracija.poruka}
+
+                <h:form >
+
+
+                    Korisničko ime:
+                    <br/>
+                    <p:inputText value="#{registracija.username}" class="unos"/>
+                    <br/>
+                    <br/>
+                    Lozinka:
+                    <br/>
+
+                    <p:password value="#{registracija.password}" class="unos"/>
+                    <br/>
+                    <br/>
+                    <p:commandButton action="#{registracija.login()}" value="Prijavi se" ajax="false"/>
+                </h:form>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center"  gutter="0" >
+                <h:form>
+                    <p:outputLabel value="Pretraga partnera ETF-a: " class="boldovano"/>
+                    <br/>
+                    <p:outputLabel value="Naziv kompanije: "/>
+                    <p:inputText value="#{pomocni.nazivKompanije}" required="true"/>
+                    <br/>
+                    <p:commandButton value="Pretraga" action="#{pomocni.gostTrazi()}" ajax="false"/>
+                </h:form>
+                <br/>
+                <br/>
+
+                <h:form>
+                    <p:dataTable value="#{pomocni.kompanije1}" var="k"  rendered="#{pomocni.gotovo1}" emptyMessage="Ne postoji kompanija koja odgovara zadatom opisu">
+                       
+                        <p:column headerText="Naziv kompanije" >
+                            <h:outputText value="#{k.naziv}" />
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+                <br/>
+                <br/>
+
+                <ui:param name="max" value="#{pomocni.max}"/>
+                <ui:repeat var="i" value="#{pomocni.pre}" size="#{max}" >
+
+                    <a href="##{i.naziv}"> 
+                        <p:outputLabel value="#{i.naziv}"  /> 
+                    </a>
+                    <br/>
+                </ui:repeat>
+
+
+                <br/>
+
+                <ui:repeat var="i" value="#{pomocni.pre}" size="#{max}" >
+                    <br/>
+                    <div id="#{i.naziv}">   
+
+
+                        <p:dataTable value="#{pomocni.hmm.get(i.naziv)}" var="j" emptyMessage="Nema kompanija koje imaju aktivan ugovor vezan za ovaj paket" >
+                            <f:facet name="header">
+                                #{i.naziv}
+                            </f:facet>
+                            <p:column headerText="Naziv">
+                                <h:outputText value="#{j.naziv}" />
+                            </p:column>
+                            <p:column headerText="Logo">
+                                <p:graphicImage value="#{j.stringZaTabelu}" width="200" height="100">
+						
+                                </p:graphicImage>
+                            </p:column>
+                            <p:column headerText="Opis">
+                                <h:outputText value="#{j.opis}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </ui:repeat>
+            </p:layoutUnit>
+
+
+            <p:layoutUnit position="south" size="40" gutter="0" closable="true" >
+                <p:outputLabel class="header"  value="Elektrotehnički fakultet, Univerzitet u Beogradu, Bulevar kralja Aleksandra 73, 11200 Beograd, Srbija" />
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+</html>
+
+
+

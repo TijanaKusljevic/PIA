@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Novi novčani ugovor</title>
+        <h:outputStylesheet library="kiki" name="prikaz.css">
+
+        </h:outputStylesheet>
+
+    </h:head>
+    <h:body>
+        <p:layout style="min-width:400px;min-height:200px;" fullPage="true" >
+            <p:layoutUnit position="north" resizable="false" size="150"  gutter="0">
+                <div class="veliki" >
+                    <div class="slika">  <h:graphicImage value="resources/druga.jpg"  height="100"  width="100"  /> </div>
+                    <div class="div" >     <p:outputLabel value="Elektrotehnički fakultet Univerzitet u Beogradu" class="naslov"/> </div>
+                </div> 
+
+            </p:layoutUnit>
+            <p:layoutUnit position="center"  gutter="0">
+                <h:form>
+                    <p:outputLabel value="Novi novčani ugovor:"/>  
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="Izaberite paket*:"/>
+                        <p:selectOneMenu value="#{novcani.pak}" rendered="#{not empty paket.items}" required="true">
+                            <f:selectItems value="#{paket.items}">  </f:selectItems>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Izaberite kompaniju*:"/>
+                        <p:selectOneMenu value="#{novcani.komp}" rendered="#{not empty kompanija.items}" required="true">
+                            <f:selectItems value="#{kompanija.items}">  </f:selectItems>
+                        </p:selectOneMenu>
+
+                        Datum ugovora*: <p:calendar value="#{novcani.datum}" required="true"/>
+                        Status ugovora*: 
+                        <p:selectOneMenu value="#{novcani.status}" rendered="#{not empty status.items}" required="true">
+                            <f:selectItems value="#{status.items}">  </f:selectItems>
+                        </p:selectOneMenu>
+
+                        Da li je poslata faktura?* <p:selectOneRadio  value="#{novcani.poslato}" required="true">
+                            <f:selectItem itemLabel="da" itemValue="1" />
+
+                            <f:selectItem itemLabel="ne" itemValue="0" />
+                        </p:selectOneRadio>
+
+                        Da li je izvršena uplata?* <p:selectOneRadio  value="#{novcani.uplaceno}" required="true">
+                            <f:selectItem itemLabel="da" itemValue="1" />
+
+                            <f:selectItem itemLabel="ne" itemValue="0" />
+                        </p:selectOneRadio>
+
+                        Datum uplate*: <p:calendar value="#{novcani.datumUplate}" required="true"/>
+                        Komentar: <p:inputTextarea value="#{novcani.komentar}"/>
+
+
+                    </p:panelGrid>
+                    <p:commandButton value="postavi" action="#{novcani.napravi()}" ajax="false"/>
+                </h:form>
+            </p:layoutUnit>  
+            <p:layoutUnit position="east" gutter="0" size="200">
+                <h:form>
+
+                    <p:commandButton value="Odjavi se" action="#{registracija.odjaviSe()}" class="dugme"/>
+                </h:form>
+                <br/>
+                <h:form>
+
+                    <p:commandButton value="Povratak na prethodnu stranu " action="menadzer" class="dugme"/>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50" gutter="0">
+                <p:outputLabel class="header"  value="Elektrotehnički fakultet, Univerzitet u Beogradu, Bulevar kralja Aleksandra 73, 11200 Beograd, Srbija"/>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
